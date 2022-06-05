@@ -1,4 +1,4 @@
-package dev.jonah.cipherdecrypt.setup;
+package dev.jonah.cipherdecrypt.fitness;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,6 +22,7 @@ public class FrequencyExpectation {
     private HashMap<String, BigInteger> frequencies;
     /** The total count of all quadgrams in the file. */
     private BigInteger totalCount;
+
 
     // --- Constructors:
 
@@ -49,6 +50,7 @@ public class FrequencyExpectation {
             e.printStackTrace();
         }
     }
+
 
     // --- Methods:
 
@@ -88,5 +90,6 @@ public class FrequencyExpectation {
     public double getLogFrequency(String quadgram) {
         return Math.log(getFrequency(quadgram));
     }
+
 
 }

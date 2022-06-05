@@ -1,6 +1,6 @@
 package dev.jonah.cipherdecrypt.main;
 
-import dev.jonah.cipherdecrypt.setup.FrequencyExpectation;
+import dev.jonah.cipherdecrypt.fitness.FrequencyExpectation;
 
 /** Contains the main method. Handles input.
  *
