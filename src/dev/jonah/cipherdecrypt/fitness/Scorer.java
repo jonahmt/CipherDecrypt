@@ -1,5 +1,7 @@
 package dev.jonah.cipherdecrypt.fitness;
 
+import java.util.HashMap;
+
 /**
  * Class that compares the actual calculated frequencies to
  * the ones that are expcted (from a FrequencyExpectation object).
@@ -21,7 +23,6 @@ public class Scorer {
     public Scorer(FrequencyExpectation expectation) {
         this.expectation = expectation;
     }
-
 
 
     // --- Methods:
@@ -52,6 +53,34 @@ public class Scorer {
     public double squaredFrequencyDiff(String quadgram, double logFrequency) {
         double d = logFrequencyDiff(quadgram, logFrequency);
         return d * d;
+    }
+
+    /**
+     * Scores the entire message, by finding the frequency of each
+     * quadgram, taking the log, and comparing to the expected  log
+     * frequencies using squaredFreqDiff. Adds all the results.
+     */
+    public double unscaledScore(String message) {
+        double score = 0.0;
+        HashMap<String, Integer> counts = new HashMap<>();
+        int total = 0;
+
+        // Populate the hashmap:
+        for (int i = 0; i < message.length() - 4; i++) {
+            String quadgram = message.substring(i, i+4);
+            counts.put(quadgram, counts.getOrDefault(quadgram, 0) + 1);
+            total++;
+        }
+
+        // For each quadgram, calculate the probability and score it.
+        // Add accordingly to score
+        for (String quadgram : counts.keySet()) {
+            double probability =  (double) counts.get(quadgram) / total;
+            double logProb = Math.log(probability);
+            score += squaredFrequencyDiff(quadgram, logProb);
+        }
+        
+        return score;
     }
 
 
