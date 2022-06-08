@@ -60,7 +60,7 @@ public class Scorer {
      * quadgram, taking the log, and comparing to the expected  log
      * frequencies using squaredFreqDiff. Adds all the results.
      */
-    public double unscaledScore(String message) {
+    public double score(String message) {
         double score = 0.0;
         HashMap<String, Integer> counts = new HashMap<>();
         int total = 0;
@@ -79,7 +79,7 @@ public class Scorer {
             double logProb = Math.log(probability);
             score += squaredFrequencyDiff(quadgram, logProb);
         }
-        
+
         return score;
     }
 
