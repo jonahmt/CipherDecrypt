@@ -2,6 +2,7 @@ package dev.jonah.cipherdecrypt.main;
 
 import dev.jonah.cipherdecrypt.fitness.FrequencyExpectation;
 import dev.jonah.cipherdecrypt.fitness.Scorer;
+import dev.jonah.cipherdecrypt.solver.Solver;
 
 /** Contains the main method. Handles input.
  *
@@ -11,22 +12,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FrequencyExpectation baseline = new FrequencyExpectation();
+        Solver solver = new Solver();
 
-        String realMessage = "HELLOMYNAMEISJONAHHOWAREYOUDOINGTODAYITHINKITSAGREATTIMETO" +
-                "GOTOTHEBEACHANDPLAYCLASHOFCLANSITCOULDALSOBEFUNTOGOINTOTHEMOUNTAINSANDSEETHE" +
-                "CASTLEMAYBEWECOULDCLIMBONTHEROCKSAFTERWARDSANDTHENGOANDGRABSOMETHINGTOEATDOWN" +
-                "BYTHEHARBORAFTERTHATWECANGOTOTHEAMUESMENTPARKITWILLBEAFUNTIME";
+        String message = "TIONTIONTION";
 
-        String fakeMessage = "HHFGWSHOHSFOPHIOHSFPOIHSFPOIHSPOFIHFHHAOIHJAOISJFOHWFOIHS" +
-                "SNFZMMXHAHQOOIIEHFDFOAOOONSFBGGETWSKNAPPDLALMWNASERTYYFJQNDJJDJANBDLAKDOPDJFNF" +
-                "JFJDJQKDNNNCKFHYYYTPRPPKLLAMENEEEEITTITITIFDSSDFFONTIOTNTISDFJSOJFJWIJJIIJNFIOFNHA" +
-                "JFJJWNKJWNSKMSOKMXCFPOOIWRUIZNDHGIEOJFNTUSIOLCNFHDIROTNNQKSOPLEEURNDKLJNJRJ";
-
-        Scorer scorer = new Scorer(baseline);
-
-        System.out.println(scorer.score(fakeMessage));
-        System.out.println(scorer.score(realMessage));
+        System.out.println(solver.solve(message));
 
     }
 

@@ -24,6 +24,13 @@ public class Scorer {
         this.expectation = expectation;
     }
 
+    /**
+     * Creates a new Scorer with a new expectation object.
+     */
+    public Scorer() {
+        this.expectation = new FrequencyExpectation();
+    }
+
 
     // --- Methods:
 
